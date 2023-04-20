@@ -1,0 +1,38 @@
+service: my-app
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 3000
+
+functions:
+  createAccount:
+    handler: src/lambdas/createAccount.handler
+    events:
+      - http:
+          path: /accounts
+          method: post
+  updateAccount:
+    handler: src/lambdas/updateAccount.handler
+    events:
+      - http:
+          path: /accounts/{id}
+          method: put
+
+resources:
+  Resources:
+    # Add any AWS resources you need here

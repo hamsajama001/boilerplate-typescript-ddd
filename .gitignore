@@ -1,0 +1,32 @@
+# Node.js dependencies
+node_modules
+
+# Build artifacts
+dist
+
+# Environment variables and sensitive files
+.env
+.env.local
+.env.development
+.env.production
+*.pem
+*.key
+
+# IDE and editor files
+.vscode
+*.log
+.idea
+*.iml
+*.history
+*.swp
+*.swo
+*.swn
+
+# Serverless framework artifacts
+.serverless
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+*.tfvars
